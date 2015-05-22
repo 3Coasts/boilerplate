@@ -1,5 +1,6 @@
-var View = require('ampersand-view');
+var View = require('ampersand-view')
+  , html = require('../html/home.html')
 
 module.exports = View.extend({
-  template: app.html('home')
+  template: html
 });

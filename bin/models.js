@@ -2,8 +2,13 @@ var mongoose = require('mongoose')
   , config = require('./config')
   , fs = require('fs');
 
-mongoose.connect("mongodb://" + config.mongo_host + "/" + config.mongo_db);
+mongoose.connect("mongodb://" + config.mongo.host + "/" + config.mongo.database, {
+  user: config.mongo.user || null,
+  pass: config.mongo.pass || null
+});
+
 var db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
 
 // get the subdirectories

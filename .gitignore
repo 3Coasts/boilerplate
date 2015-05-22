@@ -1,7 +1,4 @@
 .idea
 node_modules
-public/.sass-cache
-gs.map.js
-style.css
 config
-app.js
+public

@@ -2,18 +2,19 @@ var app = require('ampersand-app')
   , View = require('ampersand-view')
   , ViewSwitcher = require('ampersand-view-switcher')
   , setFavicon = require('favicon-setter')
-  , addClass = require('amp-add-class')
-  , removeClass = require('amp-remove-class')
-  , NavView = require('./nav');
+  , NavView = require('./nav')
+  , html = require('../html/main.html')
 
 
 module.exports = View.extend({
 
-  template: require('./main.html'),
+  template: html,
+
+  autoRender: true,
 
   initialize: function () {
-    var view = this;
-    view.listenTo(app.router, 'page', this.handleNewPage);
+    this.listenTo(app, 'page', this.setPage);
+    this.listenTo(app, 'secure-page', this.setPageSecure)
   },
 
   events: {
@@ -23,29 +24,19 @@ module.exports = View.extend({
   render: function () {
     var view = this;
     view.renderWithTemplate({me: app.me});
-    view.pageSwitcher = new ViewSwitcher(view.queryByHook('page-container'), {
-      show: function (newView, oldView) {
-        document.scrollTop = 0;
-        addClass(newView.el, 'active');
-        app.currentPage = newView;
-      }
-    });
+    view.pageSwitcher = new ViewSwitcher(view.queryByHook('page-container'));
+    view.renderSubview(new NavView({ model: app.me }), view.queryByHook('nav'));
     //setFavicon('/path/to/image.png');
     return view;
   },
 
-  subviews: {
-    nav: {
-      container: '[data-hook=nav]',
-      prepareView: function (el) {
-        return new NavView({ el: el });
-      }
-    }
+  setPageSecure: function (view) {
+    if (!app.me.signedIn) return app.nav('login');
+    this.pageSwitcher.set(view);
   },
 
-  handleNewPage: function (view) {
+  setPage: function (view) {
     this.pageSwitcher.set(view);
-    this.updateActiveNav();
   },
 
   handleLinkClick: function (e) {
@@ -55,18 +46,7 @@ module.exports = View.extend({
       e.preventDefault();
       app.nav(aTag.pathname);
     }
-  },
-
-  updateActiveNav: function () {
-    var path = window.location.pathname.slice(1);
-    this.queryAll('.nav a[href]').forEach(function (aTag) {
-      var aPath = aTag.pathname.slice(1);
-      if ((!aPath && !path) || (aPath && path.indexOf(aPath) === 0)) {
-        addClass(aTag.parentNode, 'active');
-      } else {
-        removeClass(aTag.parentNode, 'active');
-      }
-    });
   }
+
 
 });

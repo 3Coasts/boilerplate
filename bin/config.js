@@ -1,6 +1,6 @@
 var fs = require('fs'),
   config = JSON.parse(JSON.stringify(process.env)),
-  each = require('amp-each');
+  each = require('lodash.foreach');
 
 var configFiles = fs.readdirSync(__dirname + '/../config');
 

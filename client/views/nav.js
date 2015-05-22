@@ -1,5 +1,9 @@
-var View = require('ampersand-view');
+var View = require('ampersand-view')
+  , html = require('../html/nav.html')
 
 module.exports = View.extend({
-  template: require('./nav.html')
+  template: html,
+  bindings: {
+    'model.signedIn': { type: 'toggle', yes: '[data-hook=logout],[data-hook=account]', no: '[data-hook=login],[data-hook=register]' }
+  }
 });

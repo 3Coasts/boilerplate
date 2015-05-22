@@ -1,18 +1,12 @@
-var Model = require('ampersand-model');
+var Model = require('./base-model')
 
 module.exports = Model.extend({
   modelType: 'User',
+  urlRoot: '/api/v1/user',
+  idAttribute: '_id',
   props: {
-    firstName: 'string',
-    lastName: 'string',
-    email: 'string'
-  },
-  derived: {
-    fullName: {
-      deps: ['firstName','lastName'],
-      fn: function () {
-        return [this.firstName,this.lastName].join(' ');
-      }
-    }
+    _id: 'string',
+    name: 'string',
+    phone: 'string'
   }
 });

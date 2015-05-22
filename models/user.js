@@ -1,97 +1,67 @@
 var mongoose = exports.mongoose = require('mongoose')
   , config = require('../bin/config')
-  , bcrypt = require('bcrypt')
+  , twilio = require('../bin/twilio')
   , token = require('../bin/token')
-  , email = require('../bin/email')
-  , defaults = require('../bin/model-defaults')
-  , isUndefined = require('amp-is-undefined')
-  , passwordTest = require('../bin/password-test');
+  , isUndefined = require('lodash.isundefined')
+  , isFunction = require('lodash.isfunction');
 
 
 var schema = new mongoose.Schema({
-  firstName: { type: String },
-  lastName: { type: String },
-  email: { type: String, unique: true },
-  password: { type: String },
+  name: { type: String },
+  phone: { type: String, unique: true },
+  authToken: { type: String },
+  accessTokens: { type: Array, default: [] },
   createdAt: { type: Date },
-  updatedAt: { type: Date },
-  active: { type: Boolean, default: false }
+  updatedAt: { type: Date }
 });
 
-schema.pre('save', true, function(password, other) {
+schema.pre('save', function(next) {
   var user = this;
-  user = defaults.save(user);
-  user.email = user.email.toLowerCase();
-  other();
-
-  if(isUndefined(user.password))
-    password();
-
-  if(!user.isModified('password'))
-    password();
-  else
-    updatePass();
-
-  function updatePass () {
-    bcrypt.genSalt(10, function(err, salt) {
-      if(err) return password(err);
-      bcrypt.hash(user.password, salt, function(err, hash) {
-        if(err) return password(err);
-        user.password = hash;
-        password();
-      });
-    });
+  user.updatedAt = new Date();
+  if(!user.createdAt){
+    user.createdAt = new Date();
   }
+  user.phone = user.phone.replace(/\D/g,'');
+  next();
 });
 
 schema.static('register', function (data, cb) {
-
-  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  if(isUndefined(data.email)) return cb("NO_EMAIL", false);
-  if(!re.test(data.email)) return cb("INVALID_EMAIL", false);
-
+  if(isUndefined(data.phone)) return cb("NO_PHONE", false);
   var user = new this(data);
-  user.save(sendEmail);
-
-  function sendEmail(err, user) {
-    if(err){
-      if(err.code === 11000) return cb('ACCOUNT_EXISTS');
-      return cb(err);
-    }
-
-    var args = {
-      type: 'user-new',
-      subject: "Welcome to Airpnp!",
-      users: user,
-      host: config.host
-    };
-    email(args, function (err, response){
-      if(err) throw err;
-      cb(null, user);
-    });
-
-  }
-
-});
-
-schema.static('reset', function ( email, cb ){
-  this.findOne({'email': email}, function(err, user){
-    if (err) cb(err);
-    if (!user) return cb();
-    user.token = token();
-    user.save(cb);
-  });
-});
-
-
-
-schema.methods.comparePassword = function (candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
+  user.save(function (err, user) {
     if(err) return cb(err);
-    cb(null, isMatch);
+    cb(null, user);
   });
-};
+});
+
+schema.method('toJSON', function() {
+  var user = this.toObject();
+  delete user.authToken;
+  delete user.accessTokens;
+  delete user.phone;
+  return user;
+});
+
+schema.method('sendToken', function (cb) {
+  var user = this;
+  user.authToken = token(7, '1234567890');
+  user.save(function (err) {
+    if (err) return cb(err);
+    if (config.isDev) {
+      console.log('Authorization Token: ' + user.authToken);
+      return cb(null);
+    }
+    twilio.sendMessage({
+      from: config.twilio.number,
+      to: user.phone,
+      body: 'Authentication Token: ' + user.authToken
+    }, cb);
+  });
+  setTimeout(function () {
+    user.authToken = null;
+    user.save();
+  }, config.authTokenTimeout);
+});
 
 
 module.exports = schema;
