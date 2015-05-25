@@ -2,7 +2,7 @@ var webpack = require('webpack')
   , yeticss = require('yeticss')
   , autoPrefixer = require('autoprefixer-core')
   , ExtractTextPlugin = require('extract-text-webpack-plugin')
-  , config = require('./bin/config');
+  , config = require('./lib/config');
 
 var conf = {
   entry: ["./client/app.js"],

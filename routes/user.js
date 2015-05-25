@@ -1,5 +1,5 @@
-var models = require('../bin/models')
-  , passport = require('../bin/passport')
+var models = require('../lib/models')
+  , passport = require('../lib/passport')
   , extend = require('lodash.assign')
   , without = require('lodash.without');
 

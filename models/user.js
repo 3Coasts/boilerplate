@@ -1,7 +1,7 @@
 var mongoose = exports.mongoose = require('mongoose')
-  , config = require('../bin/config')
-  , twilio = require('../bin/twilio')
-  , token = require('../bin/token')
+  , config = require('../lib/config')
+  , twilio = require('../lib/twilio')
+  , token = require('../lib/token')
   , isUndefined = require('lodash.isundefined')
   , isFunction = require('lodash.isfunction');
 
