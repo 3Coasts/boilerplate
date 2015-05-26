@@ -1,0 +1,26 @@
+[
+
+  {
+    "name": "user",
+    "routes": [
+      { "method": "post", "path": "user", "description": "Creates a new user" },
+      { "method": "post", "path": "user/token", "description": "Client sends phone number and gets a token"  },
+      { "method": "post", "path": "user/login", "description": "Client post phone and token to authenticate" },
+      { "method": "get", "path": "user/me", "protect": true, "description": "Get logged in user" },
+      { "method": "get", "path": "user/logout", "protect": true, "description": "Logout" },
+      { "method": "get", "path": "user/:id", "protect": true, "description": "Get user info" }
+    ]
+  },
+
+  {
+    "name": "article",
+    "routes": [
+      { "method": "get", "path": "article", "description": "Get article collection" },
+      { "method": "post", "path": "article", "description": "Creates a new article" },
+      { "method": "get", "path": "article/:id", "description": "Get article info" },
+      { "method": "put", "path": "article/:id", "description": "Update an article" },
+      { "method": "delete", "path": "article/:id", "description": "Deletes an article" }
+    ]
+  }
+
+]
