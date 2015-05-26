@@ -2,6 +2,7 @@ var app = require('ampersand-app')
   , domReady = require('domready')
   , bind = require('lodash.bind')
   , styles = require('./styles/main.styl')
+  , fastclick = require('fastclick')
   , Me = require('./models/me')
   , Router = require('./router')
   , config = require('./config')
@@ -12,6 +13,7 @@ app.extend({
   me: new Me(),
   router: new Router(),
   init: function () {
+    fastclick.attach(document.body);
     new MainView({el: document.body});
     if (window.localStorage.accessToken)
       this.me.fetch();

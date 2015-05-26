@@ -26,6 +26,7 @@
     "express": "^4.12.3",
     "express-session": "^1.10.4",
     "extract-text-webpack-plugin": "^0.8.0",
+    "fastclick": "^1.0.6",
     "favicon-setter": "^0.1.1",
     "file-loader": "^0.8.1",
     "html-loader": "^0.2.3",
