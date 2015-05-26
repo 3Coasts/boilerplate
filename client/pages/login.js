@@ -1,6 +1,6 @@
 var View = require('ampersand-view')
   , xhr = require('xhr')
-  , html = require('../html/login.html');
+  , html = require('./login.html');
 
 module.exports = View.extend({
   name: 'Login',

@@ -1,6 +1,6 @@
 var View = require('ampersand-view')
   , xhr = require('xhr')
-  , html = require('../html/register.html')
+  , html = require('./register.html')
   , Users = require('../models/user-collection');
 
 module.exports = View.extend({

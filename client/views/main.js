@@ -3,7 +3,7 @@ var app = require('ampersand-app')
   , ViewSwitcher = require('ampersand-view-switcher')
   , setFavicon = require('favicon-setter')
   , NavView = require('./nav')
-  , html = require('../html/main.html')
+  , html = require('./main.html')
 
 
 module.exports = View.extend({

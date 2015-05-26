@@ -1,7 +1,7 @@
 var app = require('ampersand-app')
   , View = require('ampersand-view')
   , xhr = require('xhr')
-  , html = require('../html/login-verification.html');
+  , html = require('./login-verification.html');
 
 module.exports = View.extend({
   name: 'LoginVerification',

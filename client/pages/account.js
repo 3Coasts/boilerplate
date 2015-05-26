@@ -1,5 +1,5 @@
 var View = require('ampersand-view')
-  , html = require('../html/account.html');
+  , html = require('./account.html');
 
 module.exports = View.extend({
   template: html,
