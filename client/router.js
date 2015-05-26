@@ -52,6 +52,7 @@ module.exports = Router.extend({
     app.trigger('secure-page', new AccountPage({ model: app.me }))
   },
 
+
   catchAll: function () {
     this.redirectTo('/')
   }
