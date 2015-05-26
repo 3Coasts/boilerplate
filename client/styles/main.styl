@@ -7,4 +7,17 @@
   @extend .list-inline
 
 #content
-  @extend .container
+  @extend .container.pagination
+
+.pagination
+  div
+    float: left
+
+  div:not(:last-child)
+    border-right: $ui-border
+
+  .unavailable-item
+    .icon-arrow-left
+      border-right: 5px solid $gray-light
+    .icon-arrow-right
+      border-left: 5px solid $gray-light
