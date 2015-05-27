@@ -1,0 +1,9 @@
+{
+  "USER_TOKEN_VERIFIED": "Login success.",
+  "USER_NOT_FOUND": "User not found.",
+  "USER_TOKEN_SENT": "User token has been send.",
+  "USER_CREATED": "User account has been created.",
+  "ARTICLE_CREATED": "Created!",
+  "ARTICLE_UPDATED": "Saved!",
+  "ARTICLE_DELETED": "Gone!"
+}

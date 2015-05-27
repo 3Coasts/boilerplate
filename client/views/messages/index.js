@@ -5,7 +5,7 @@ var View = require('ampersand-view')
   , Collection = require('./collection')
   , Model = require('./model')
   , Message = require('./message')
-  , messages = require('./messages.json')
+  , messages = require('../../messages.json')
   , html = require('./index.html');
 
 module.exports = View.extend({

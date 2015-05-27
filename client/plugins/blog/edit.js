@@ -32,8 +32,10 @@ module.exports = View.extend({
 
   submitForm: function (e) {
     e.preventDefault();
+    var isNew = this.model.isNew();
     this.model.save(null, {
       success: function (model) {
+        app.msg(isNew ? 'ARTICLE_CREATED' : 'ARTICLE_UPDATED');
         app.nav(model.viewLink);
       }
     });

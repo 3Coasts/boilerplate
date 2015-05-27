@@ -6,7 +6,7 @@ var View = require('ampersand-view')
 module.exports = View.extend({
   template: html,
   bindings: {
-    'app.me.signedIn': { type: 'toggle', yes: '[data-hook=admin]' }
+    'model.signedIn': { type: 'toggle', hook: 'admin' }
   },
   props: {
     'paginator': 'any'

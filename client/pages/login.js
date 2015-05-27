@@ -22,7 +22,8 @@ module.exports = View.extend({
       json: { phone: app.me.phone }
     }, function (err, resp, body) {
       if (err) return console.error(err);
-      if (resp.statusCode === 404) return app.msg('404', true);
+      if (resp.statusCode === 404) return app.msg('USER_NOT_FOUND', true);
+      app.msg('USER_TOKEN_SENT');
       app.nav('/login/verify');
     });
   }

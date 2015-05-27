@@ -43,7 +43,7 @@ module.exports = Router.extend({
       url: '/api/v1/user/logout',
       headers: { Authorization: 'Bearer ' + window.localStorage.accessToken || '' }
     }, function () {
-      delete window.localStorage.accessToken
+      delete window.localStorage.accessToken;
       window.location.href = '/';
     });
   },

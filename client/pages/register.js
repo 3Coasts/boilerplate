@@ -34,6 +34,7 @@ module.exports = View.extend({
           json: { phone: me.phone }
         }, function (err) {
           if (err) return console.error(err);
+          app.msg('USER_CREATED');
           app.nav('/login/verify');
         });
       }

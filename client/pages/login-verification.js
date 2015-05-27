@@ -28,6 +28,7 @@ module.exports = View.extend({
       window.localStorage.accessToken = resp.headers['access-token'];
       app.me.set(body);
       app.me.signedIn = true;
+      app.msg('USER_TOKEN_VERIFIED');
       app.nav('account');
     });
   }
