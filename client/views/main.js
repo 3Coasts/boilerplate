@@ -1,7 +1,6 @@
 var app = require('ampersand-app')
   , View = require('ampersand-view')
   , ViewSwitcher = require('ampersand-view-switcher')
-  , setFavicon = require('favicon-setter')
   , NavView = require('./nav')
   , Messages = require('./messages/index')
   , html = require('./main.html');
@@ -22,7 +21,6 @@ module.exports = View.extend({
   },
 
   render: function () {
-    //setFavicon('/path/to/image.png');
     this.renderWithTemplate({me: app.me});
     this.pageSwitcher = new ViewSwitcher(this.queryByHook('page-container'));
     this.renderSubview(new NavView({ model: app.me }), this.queryByHook('nav'));

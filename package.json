@@ -5,7 +5,8 @@
   "main": "lib/app.js",
   "scripts": {
     "build": "webpack",
-    "start": "./node_modules/concurrently/src/main.js 'webpack' 'node lib/app'"
+    "start": "./node_modules/concurrently/src/main.js 'webpack' 'node lib/app'",
+    "generate-icons": "./lib/favicons.js"
   },
   "dependencies": {
     "ampersand-app": "^1.0.3",
@@ -27,10 +28,9 @@
     "express": "^4.12.3",
     "extract-text-webpack-plugin": "^0.8.0",
     "fastclick": "^1.0.6",
-    "favicon-setter": "^0.1.1",
+    "favicons": "^3.1.1",
     "file-loader": "^0.8.1",
     "html-loader": "^0.2.3",
-    "jade": "~1.9.2",
     "json-loader": "^0.5.1",
     "lodash.assign": "^3.2.0",
     "lodash.bind": "^3.1.0",
