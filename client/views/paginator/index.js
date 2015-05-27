@@ -35,7 +35,7 @@ module.exports = View.extend({
     disableNext: {
       deps: ['count','limit','skip'],
       fn: function () {
-        return this.currentPage === this.totalPages;
+        return this.currentPage === this.totalPages || this.totalPages === 0;
       }
     },
     disablePrevious: {
