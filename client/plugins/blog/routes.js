@@ -9,7 +9,7 @@ var app = require('ampersand-app')
   , articles = new Collection();
 
 app.router.route('blog', 'page', function () {
-  app.trigger('page', new IndexView({ collection: articles }));
+  app.trigger('page', new IndexView({ model: app.me, collection: articles }));
 });
 
 app.router.route('blog/:slug', 'page', function (slug) {

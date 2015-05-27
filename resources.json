@@ -3,7 +3,7 @@
   {
     "name": "user",
     "model": {
-      "slug": "title",
+      "slug": "name",
       "hidden": ["authToken","accessToken","phone"],
       "props": {
         "name": { "type": "string" },
@@ -25,7 +25,7 @@
   {
     "name": "article",
     "model": {
-      "slug": "name",
+      "slug": "title",
       "props": {
         "title": { "type": "string" },
         "summary": { "type": "string" },
