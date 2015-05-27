@@ -40,6 +40,23 @@
       { "method": "put", "path": "article/:id", "protect": true, "description": "Update an article" },
       { "method": "delete", "path": "article/:id", "protect": true, "description": "Deletes an article" }
     ]
+  },
+
+  {
+    "name": "widget",
+    "model": {
+      "slug": "title",
+      "props": {
+        "title": { "type": "string", "required": true }
+      }
+    },
+    "routes": [
+      { "method": "get", "path": "widget", "description": "Get widget collection" },
+      { "method": "post", "path": "widget", "description": "Creates a new widget" },
+      { "method": "get", "path": "widget/:id", "description": "Get widget info" },
+      { "method": "put", "path": "widget/:id", "description": "Update an widget" },
+      { "method": "delete", "path": "widget/:id", "description": "Deletes an widget" }
+    ]
   }
 
 ]
