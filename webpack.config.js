@@ -13,6 +13,7 @@ var conf = {
   module: {
     loaders: [
       { test: /\.html$/, loader: "html" },
+      { test: /\.json$/, loader: "json" },
       { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
       { test: /\.styl$/, loader: 'style-loader!css-loader!postcss-loader!stylus-loader' },
       { test: /\.(otf|eot|svg|ttf|woff)/, loader: 'url-loader?limit=10000' },

@@ -33,7 +33,7 @@ exports.getUserLogout = function (req, res, next) {
 exports.postUserToken = function (req, res, next) {
   models.User.findOne({phone: req.body.phone}, function (err, user) {
     if (err) return next(err);
-    if (!user) return res.sendStatus(403);
+    if (!user) return res.sendStatus(404);
     user.sendToken(function (err) {
       if (err) return next(err);
       res.sendStatus(200);

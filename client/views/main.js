@@ -3,8 +3,8 @@ var app = require('ampersand-app')
   , ViewSwitcher = require('ampersand-view-switcher')
   , setFavicon = require('favicon-setter')
   , NavView = require('./nav')
-  , html = require('./main.html')
-
+  , Messages = require('./messages/index')
+  , html = require('./main.html');
 
 module.exports = View.extend({
 
@@ -22,12 +22,11 @@ module.exports = View.extend({
   },
 
   render: function () {
-    var view = this;
-    view.renderWithTemplate({me: app.me});
-    view.pageSwitcher = new ViewSwitcher(view.queryByHook('page-container'));
-    view.renderSubview(new NavView({ model: app.me }), view.queryByHook('nav'));
     //setFavicon('/path/to/image.png');
-    return view;
+    this.renderWithTemplate({me: app.me});
+    this.pageSwitcher = new ViewSwitcher(this.queryByHook('page-container'));
+    this.renderSubview(new NavView({ model: app.me }), this.queryByHook('nav'));
+    this.renderSubview(new Messages(), this.queryByHook('messages-container'));
   },
 
   setPageSecure: function (view) {
