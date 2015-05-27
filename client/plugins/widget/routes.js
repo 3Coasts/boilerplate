@@ -6,34 +6,34 @@ var app = require('ampersand-app')
   , DeleteView = require('./delete')
   , Collection = require('./collection')
   , Model = require('./model')
-  , articles = new Collection();
+  , widgets = new Collection();
 
-app.router.route('blog', 'page', function () {
-  app.trigger('page', new IndexView({ model: app.me, collection: articles }));
+app.router.route('widget', 'page', function () {
+  app.trigger('page', new IndexView({ model: app.me, collection: widgets }));
 });
 
-app.router.route('blog/:slug', 'page', function (slug) {
-  articles.getOrFetch(slug, function (err, model) {
+app.router.route('widget/:slug', 'page', function (slug) {
+  widgets.getOrFetch(slug, function (err, model) {
     if (err) return console.error(err);
     app.trigger('page', new FullView({ model: model }));
   });
 });
 
-app.router.route('blog/:slug/edit', 'page', function (slug) {
-  articles.getOrFetch(slug, function (err, model) {
+app.router.route('widget/:slug/edit', 'page', function (slug) {
+  widgets.getOrFetch(slug, function (err, model) {
     if (err) return console.error(err);
     app.trigger('page', new EditView({ model: model }));
   });
 });
 
-app.router.route('blog/:slug/delete', 'page', function (slug) {
-  articles.getOrFetch(slug, function (err, model) {
+app.router.route('widget/:slug/delete', 'page', function (slug) {
+  widgets.getOrFetch(slug, function (err, model) {
     if (err) return console.error(err);
     app.trigger('page', new DeleteView({ model: model }));
   });
 });
 
-app.router.route('blog/new', 'page', function () {
+app.router.route('widget/new', 'page', function () {
   app.trigger('page', new EditView({ model: new Model() }));
 });
 

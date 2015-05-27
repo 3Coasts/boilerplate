@@ -6,28 +6,16 @@ module.exports = View.extend({
   template: html,
 
   bindings: {
-    'model.title': { type: 'attribute', name: 'value', hook: 'title' },
-    'model.summary': { type: 'text', hook: 'summary' },
-    'model.body': { type: 'text', hook: 'body' }
+    'model.name': { type: 'attribute', name: 'value', hook: 'name' }
   },
 
   events: {
-    'blur [data-hook=title]': 'titleChange',
-    'blur [data-hook=summary]': 'summaryChange',
-    'blur [data-hook=body]': 'bodyChange',
+    'blur [data-hook=name]': 'nameChange',
     'submit form': 'submitForm'
   },
 
-  titleChange: function (e) {
-    this.model.title = e.target.value;
-  },
-
-  summaryChange: function (e) {
-    this.model.summary = e.target.value;
-  },
-
-  bodyChange: function (e) {
-    this.model.body = e.target.value;
+  nameChange: function (e) {
+    this.model.name = e.target.value;
   },
 
   submitForm: function (e) {
@@ -35,7 +23,7 @@ module.exports = View.extend({
     var isNew = this.model.isNew();
     this.model.save(null, {
       success: function (model) {
-        app.msg(isNew ? 'ARTICLE_CREATED' : 'ARTICLE_UPDATED');
+        app.msg(isNew ? 'WIDGET_CREATED' : 'WIDGET_UPDATED');
         app.nav(model.viewLink);
       }
     });

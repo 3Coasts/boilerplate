@@ -4,10 +4,9 @@ var View = require('ampersand-view')
 module.exports = View.extend({
   template: html,
   bindings: {
-    'model.title': { type: 'text', hook: 'title' },
-    'model.summary': { type: 'text', hook: 'summary' },
+    'model.name': { type: 'text', hook: 'name' },
     'model.viewLink': [
-      { type: 'attribute', name: 'href', hook: 'title' },
+      { type: 'attribute', name: 'href', hook: 'name' },
       { type: 'attribute', name: 'href', hook: 'read-more' }
     ]
   }

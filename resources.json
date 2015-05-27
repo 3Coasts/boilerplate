@@ -45,9 +45,9 @@
   {
     "name": "widget",
     "model": {
-      "slug": "title",
+      "slug": "name",
       "props": {
-        "title": { "type": "string", "required": true }
+        "name": { "type": "string", "required": true }
       }
     },
     "routes": [

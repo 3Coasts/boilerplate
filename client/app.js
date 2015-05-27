@@ -22,6 +22,7 @@ app.extend({
 
     //PLUGINS
     require('./plugins/blog/routes');
+    require('./plugins/widget/routes');
 
     this.router.history.start({ pushState: true });
   },

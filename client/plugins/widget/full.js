@@ -5,8 +5,7 @@ var app = require('ampersand-app')
 module.exports = View.extend({
   template: html,
   bindings: {
-    'model.title': { type: 'text', hook: 'title' },
-    'model.bodyParsed': { type: 'innerHTML', hook: 'body' },
+    'model.name': { type: 'text', hook: 'name' },
     'model.editLink': { type: 'attribute', name: 'href', hook: 'edit' },
     'model.deleteLink': { type: 'attribute', name: 'href', hook: 'delete' },
     'app.me.signedIn': { type: 'toggle', no: 'admin' }
@@ -15,7 +14,7 @@ module.exports = View.extend({
     if (confirm('Are you sure?')) {
       this.model.destroy({
         success: function () {
-          app.nav('blog');
+          app.nav('widget');
         }
       });
     }

@@ -9,8 +9,8 @@ module.exports = View.extend({
   deleteArticle: function (e) {
     this.model.destroy({
       success: function () {
-        app.msg('ARTICLE_DELETED');
-        app.nav('blog');
+        app.msg('WIDGET_DELETED');
+        app.nav('widget');
       }
     });
   }
