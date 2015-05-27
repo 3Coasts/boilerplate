@@ -2,6 +2,16 @@
 
   {
     "name": "user",
+    "model": {
+      "slug": "title",
+      "hidden": ["authToken","accessToken","phone"],
+      "props": {
+        "name": { "type": "string" },
+        "phone": { "type": "string", "unique": true },
+        "authToken": { "type": "string" },
+        "accessTokens": { "type": "array", "default": [] }
+      }
+    },
     "routes": [
       { "method": "post", "path": "user", "description": "Creates a new user" },
       { "method": "post", "path": "user/token", "description": "Client sends phone number and gets a token"  },
@@ -14,6 +24,14 @@
 
   {
     "name": "article",
+    "model": {
+      "slug": "name",
+      "props": {
+        "title": { "type": "string" },
+        "summary": { "type": "string" },
+        "body": { "type": "string" }
+      }
+    },
     "routes": [
       { "method": "get", "path": "article", "description": "Get article collection" },
       { "method": "post", "path": "article", "description": "Creates a new article" },

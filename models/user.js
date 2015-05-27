@@ -1,19 +1,9 @@
-var Model = require('../lib/model')
-  , config = require('../lib/config')
+var config = require('../lib/config')
   , twilio = require('../lib/twilio')
   , token = require('../lib/token')
-  , isUndefined = require('lodash.isundefined')
-  , isFunction = require('lodash.isfunction');
+  , isUndefined = require('lodash.isundefined');
 
-module.exports = new Model({
-  props: {
-    name: { type: String },
-    phone: { type: String, unique: true },
-    authToken: { type: String },
-    accessTokens: { type: Array, default: [] },
-  },
-  slug: 'name',
-  hidden: ['authToken','accessToken','phone'],
+module.exports = {
   preSave: function (cb) {
     this.phone = this.phone.replace(/\D/g,'');
     cb();
@@ -50,4 +40,4 @@ module.exports = new Model({
       }, config.authTokenTimeout);
     }
   }
-});
+};
