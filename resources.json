@@ -4,12 +4,11 @@
     "name": "user",
     "model": {
       "slug": "name",
-      "hidden": ["authToken","accessToken","phone"],
       "props": {
-        "name": { "type": "string" },
-        "phone": { "type": "string", "unique": true },
-        "authToken": { "type": "string" },
-        "accessTokens": { "type": "array", "default": [] }
+        "name": { "type": "string", "required": true },
+        "phone": { "type": "string", "unique": true, "select": false },
+        "authToken": { "type": "string", "select": false },
+        "accessTokens": { "type": "array", "default": [], "select": false }
       }
     },
     "routes": [
@@ -27,17 +26,19 @@
     "model": {
       "slug": "title",
       "props": {
-        "title": { "type": "string" },
+        "title": { "type": "string", "required": true },
         "summary": { "type": "string" },
-        "body": { "type": "string" }
-      }
+        "body": { "type": "string" },
+        "author": { "type": "ref", "ref": "user", "required": true }
+      },
+      "populate": "author"
     },
     "routes": [
       { "method": "get", "path": "article", "description": "Get article collection" },
-      { "method": "post", "path": "article", "description": "Creates a new article" },
+      { "method": "post", "path": "article", "protect": true, "description": "Creates a new article" },
       { "method": "get", "path": "article/:id", "description": "Get article info" },
-      { "method": "put", "path": "article/:id", "description": "Update an article" },
-      { "method": "delete", "path": "article/:id", "description": "Deletes an article" }
+      { "method": "put", "path": "article/:id", "protect": true, "description": "Update an article" },
+      { "method": "delete", "path": "article/:id", "protect": true, "description": "Deletes an article" }
     ]
   }
 

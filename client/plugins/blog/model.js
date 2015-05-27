@@ -1,5 +1,6 @@
 var app = require('ampersand-app')
-  , marked = require('marked');
+  , marked = require('marked')
+  , User = require('../../models/user');
 
 module.exports = app.BaseModel.extend({
   modelType: 'Article',
@@ -10,6 +11,9 @@ module.exports = app.BaseModel.extend({
     title: 'string',
     summary: { type: 'string', default: '' },
     body: { type: 'string', default: '' }
+  },
+  children: {
+    author: User
   },
   derived: {
     viewLink: {

@@ -5,6 +5,7 @@ module.exports = Model.extend({
   urlRoot: '/api/v1/user',
   idAttribute: 'slug',
   props: {
+    _id: 'string',
     slug: 'string',
     name: 'string',
     phone: 'string'

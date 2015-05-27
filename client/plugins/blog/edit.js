@@ -37,6 +37,9 @@ module.exports = View.extend({
       success: function (model) {
         app.msg(isNew ? 'ARTICLE_CREATED' : 'ARTICLE_UPDATED');
         app.nav(model.viewLink);
+      },
+      error: function (model, response, options) {
+        console.log(response.body.error);
       }
     });
   }
