@@ -1,0 +1,12 @@
+{
+  "preset": "node-style-guide",
+  "disallowMultipleVarDecl": null,
+  "disallowCurlyBraces": true,
+  "requireCurlyBraces": null,
+  "requireTrailingComma": null,
+  "maximumLineLength": 100,
+  "excludeFiles": [
+    "node_modules/**",
+    "public/**"
+  ]
+}

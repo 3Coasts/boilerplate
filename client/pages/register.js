@@ -13,13 +13,13 @@ module.exports = View.extend({
   events: {
     'submit form': 'onSubmitForm'
   },
-  initialize: function () {
+  initialize: function() {
     this.collection = new Users();
-    this.model.on('change:signedIn', function (model) {
+    this.model.on('change:signedIn', function(model) {
       if (model.signedIn) app.nav('account');
     });
   },
-  onSubmitForm: function (e) {
+  onSubmitForm: function(e) {
     e.preventDefault();
     var me = {
       name: this.queryByHook('name').value,
@@ -27,12 +27,12 @@ module.exports = View.extend({
     };
     app.me.phone = me.phone;
     this.collection.create(me, {
-      success: function () {
+      success: function() {
         xhr({
           method: 'POST',
           url: '/api/v1/user/token',
           json: { phone: me.phone }
-        }, function (err) {
+        }, function(err) {
           if (err) return console.error(err);
           app.msg('USER_CREATED');
           app.nav('/login/verify');

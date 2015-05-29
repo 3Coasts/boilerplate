@@ -12,19 +12,19 @@ module.exports = app.BaseModel.extend({
   derived: {
     viewLink: {
       deps: ['slug'],
-      fn: function () {
+      fn: function() {
         return '/widget/' + this.slug;
       }
     },
     editLink: {
       deps: ['slug'],
-      fn: function () {
+      fn: function() {
         return '/widget/' + this.slug + '/edit';
       }
     },
     deleteLink: {
       deps: ['slug'],
-      fn: function () {
+      fn: function() {
         return '/widget/' + this.slug + '/delete';
       }
     }

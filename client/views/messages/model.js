@@ -11,7 +11,7 @@ module.exports = Model.extend({
   derived: {
     typeClass: {
       deps: ['type'],
-      fn: function () {
+      fn: function() {
         if (this.type === 'error') return 'message-error';
         if (this.type === 'warning') return 'message-alert';
         if (this.type === 'info') return 'message-success';

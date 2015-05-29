@@ -11,7 +11,7 @@ module.exports = View.extend({
 
   autoRender: true,
 
-  initialize: function () {
+  initialize: function() {
     this.listenTo(app, 'page', this.setPage);
     this.listenTo(app, 'secure-page', this.setPageSecure)
   },
@@ -20,23 +20,23 @@ module.exports = View.extend({
     'click a[href]': 'handleLinkClick'
   },
 
-  render: function () {
+  render: function() {
     this.renderWithTemplate({me: app.me});
     this.pageSwitcher = new ViewSwitcher(this.queryByHook('page-container'));
     this.renderSubview(new NavView({ model: app.me }), this.queryByHook('nav'));
     this.renderSubview(new Messages(), this.queryByHook('messages-container'));
   },
 
-  setPageSecure: function (view) {
+  setPageSecure: function(view) {
     if (!app.me.signedIn) return app.nav('login');
     this.pageSwitcher.set(view);
   },
 
-  setPage: function (view) {
+  setPage: function(view) {
     this.pageSwitcher.set(view);
   },
 
-  handleLinkClick: function (e) {
+  handleLinkClick: function(e) {
     var aTag = e.target;
     var local = aTag.host === window.location.host;
     if (local && !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey) {

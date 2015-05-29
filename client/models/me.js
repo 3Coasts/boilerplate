@@ -6,12 +6,12 @@ module.exports = User.extend({
   session: {
     signedIn: { type: 'boolean', default: false }
   },
-  initialize: function () {
+  initialize: function() {
     var me = this;
-    this.on('sync', function () {
+    this.on('sync', function() {
       me.signedIn = true;
     });
-    this.on('error', function () {
+    this.on('error', function() {
       me.signedIn = false;
     });
   }

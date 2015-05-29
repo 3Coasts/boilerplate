@@ -6,9 +6,9 @@ module.exports = View.extend({
   events: {
     'click [data-hook=delete]': 'deleteArticle'
   },
-  deleteArticle: function (e) {
+  deleteArticle: function(e) {
     this.model.destroy({
-      success: function () {
+      success: function() {
         app.msg('WIDGET_DELETED');
         app.nav('widget');
       }

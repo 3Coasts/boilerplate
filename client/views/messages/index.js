@@ -10,11 +10,11 @@ var View = require('ampersand-view')
 
 module.exports = View.extend({
   template: html,
-  initialize: function () {
+  initialize: function() {
     this.collection = new Collection();
     app.msg = this.add.bind(this);
   },
-  render: function () {
+  render: function() {
     this.renderWithTemplate();
     this.renderCollection(this.collection, Message)
   },
@@ -25,7 +25,7 @@ module.exports = View.extend({
   // app.msg(false)
   // app.msg('no name', true)
 
-  add: function (token, error, args) {
+  add: function addMessage(token, error, args) {
     var text;
 
     error = error || token === true ? 'error' : 'info';

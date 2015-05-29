@@ -10,50 +10,56 @@ var HomePage = require('./pages/home')
 
 module.exports = Router.extend({
 
+  initialize: function() {
+    // Add plugin routes
+    require('./plugins/blog/routes');
+    require('./plugins/widget/routes');
+  },
+
   routes: {
     '': 'home',
-    'register': 'register',
-    'login': 'login',
+    register: 'register',
+    login: 'login',
     'login/verify': 'loginVerify',
-    'logout': 'logout',
-    'account': 'account',
+    logout: 'logout',
+    account: 'account',
     '(*path)': 'catchAll'
   },
 
-  home: function () {
+  home: function() {
     app.trigger('page', new HomePage({ model: app.me }))
   },
 
-  register: function () {
+  register: function() {
     app.trigger('page', new RegisterPage({ model: app.me }))
   },
 
-  login: function () {
+  login: function() {
     app.trigger('page', new LoginPage({ model: app.me }));
   },
 
-  loginVerify: function () {
+  loginVerify: function() {
     if (!app.me.phone) return app.nav('login');
     app.trigger('page', new LoginVerificationPage({ model: app.me }))
   },
 
-  logout: function () {
+  logout: function() {
     xhr({
       method: 'GET',
       url: '/api/v1/user/logout',
       headers: { Authorization: 'Bearer ' + window.localStorage.accessToken || '' }
-    }, function () {
+    }, function() {
       delete window.localStorage.accessToken;
       window.location.href = '/';
     });
   },
 
-  account: function () {
+  account: function() {
     app.trigger('secure-page', new AccountPage({ model: app.me }))
   },
 
 
-  catchAll: function () {
+  catchAll: function() {
     this.redirectTo('/')
   }
 

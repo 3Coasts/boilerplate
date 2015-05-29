@@ -18,27 +18,27 @@ module.exports = View.extend({
     'submit form': 'submitForm'
   },
 
-  titleChange: function (e) {
+  titleChange: function(e) {
     this.model.title = e.target.value;
   },
 
-  summaryChange: function (e) {
+  summaryChange: function(e) {
     this.model.summary = e.target.value;
   },
 
-  bodyChange: function (e) {
+  bodyChange: function(e) {
     this.model.body = e.target.value;
   },
 
-  submitForm: function (e) {
+  submitForm: function(e) {
     e.preventDefault();
     var isNew = this.model.isNew();
     this.model.save(null, {
-      success: function (model) {
+      success: function(model) {
         app.msg(isNew ? 'ARTICLE_CREATED' : 'ARTICLE_UPDATED');
         app.nav(model.viewLink);
       },
-      error: function (model, response, options) {
+      error: function(model, response, options) {
         console.log(response.body.error);
       }
     });

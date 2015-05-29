@@ -10,7 +10,7 @@ module.exports = View.extend({
   events: {
     'click a': 'clickEvent'
   },
-  clickEvent: function () {
+  clickEvent: function() {
     this.parent.numberClick(this.model.number);
   }
 });

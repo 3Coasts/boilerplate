@@ -4,25 +4,25 @@ var config = require('../lib/config')
   , isUndefined = require('lodash.isundefined');
 
 module.exports = {
-  preSave: function (cb) {
-    this.phone = this.phone.replace(/\D/g,'');
+  preSave: function preSave(cb) {
+    this.phone = this.phone.replace(/\D/g, '');
     cb();
   },
   statics: {
-    register: function (data, cb) {
-      if(isUndefined(data.phone)) return cb("NO_PHONE", false);
+    register: function register(data, cb) {
+      if (isUndefined(data.phone)) return cb('NO_PHONE', false);
       var user = new this(data);
-      user.save(function (err, user) {
-        if(err) return cb(err);
+      user.save(function userSaveCb(err, user) {
+        if (err) return cb(err);
         cb(null, user);
       });
     }
   },
   instanceMethods: {
-    sendToken: function (cb) {
+    sendToken: function sendToken(cb) {
       var user = this;
       user.authToken = token(7, '1234567890');
-      user.save(function (err) {
+      user.save(function userSaveCb(err) {
         if (err) return cb(err);
         if (config.isDev) {
           console.log('Authorization Token: ' + user.authToken);
@@ -34,7 +34,7 @@ module.exports = {
           body: 'Authentication Token: ' + user.authToken
         }, cb);
       });
-      setTimeout(function () {
+      setTimeout(function clearAuthToken() {
         user.authToken = null;
         user.save();
       }, config.authTokenTimeout);

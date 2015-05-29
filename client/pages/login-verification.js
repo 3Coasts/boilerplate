@@ -9,12 +9,12 @@ module.exports = View.extend({
   events: {
     'submit form': 'onSubmitForm'
   },
-  initialize: function () {
-    this.model.on('change:signedIn', function (model) {
+  initialize: function() {
+    this.model.on('change:signedIn', function(model) {
       if (model.signedIn) app.nav('account');
     });
   },
-  onSubmitForm: function (e) {
+  onSubmitForm: function(e) {
     e.preventDefault();
     xhr({
       method: 'POST',
@@ -23,7 +23,7 @@ module.exports = View.extend({
         authToken: this.queryByHook('auth-token').value,
         phone: app.me.phone
       }
-    }, function (err, resp, body) {
+    }, function(err, resp, body) {
       if (err) return console.error(err);
       window.localStorage.accessToken = resp.headers['access-token'];
       app.me.set(body);

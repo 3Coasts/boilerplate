@@ -8,19 +8,19 @@ module.exports = View.extend({
   events: {
     'submit form': 'onSubmitForm'
   },
-  initialize: function () {
-    this.model.on('change:signedIn', function (model) {
+  initialize: function() {
+    this.model.on('change:signedIn', function(model) {
       if (model.signedIn) app.nav('account');
     });
   },
-  onSubmitForm: function (e) {
+  onSubmitForm: function(e) {
     e.preventDefault();
     app.me.phone = this.queryByHook('phone').value;
     xhr({
       method: 'POST',
       url: '/api/v1/user/token',
       json: { phone: app.me.phone }
-    }, function (err, resp, body) {
+    }, function(err, resp, body) {
       if (err) return console.error(err);
       if (resp.statusCode === 404) return app.msg('USER_NOT_FOUND', true);
       app.msg('USER_TOKEN_SENT');

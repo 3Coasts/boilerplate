@@ -14,19 +14,15 @@ app.extend({
   me: new Me(),
   router: new Router(),
   BaseModel: BaseModel,
-  init: function () {
+  init: function() {
     fastclick.attach(document.body);
     new MainView({el: document.body});
     if (window.localStorage.accessToken)
       this.me.fetch();
 
-    //PLUGINS
-    require('./plugins/blog/routes');
-    require('./plugins/widget/routes');
-
     this.router.history.start({ pushState: true });
   },
-  nav: function (page) {
+  nav: function(page) {
     var url = (page.charAt(0) === '/') ? page.slice(1) : page;
     this.router.history.navigate(url, { trigger: true });
   }
@@ -34,6 +30,4 @@ app.extend({
 
 domReady(bind(app.init, app));
 
-if (config.isDev) {
-  window.app = app;
-}
+if (config.isDev) window.app = app

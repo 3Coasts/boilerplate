@@ -14,15 +14,15 @@ module.exports = View.extend({
     'submit form': 'submitForm'
   },
 
-  nameChange: function (e) {
+  nameChange: function(e) {
     this.model.name = e.target.value;
   },
 
-  submitForm: function (e) {
+  submitForm: function(e) {
     e.preventDefault();
     var isNew = this.model.isNew();
     this.model.save(null, {
-      success: function (model) {
+      success: function(model) {
         app.msg(isNew ? 'WIDGET_CREATED' : 'WIDGET_UPDATED');
         app.nav(model.viewLink);
       }

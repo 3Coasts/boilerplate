@@ -18,25 +18,25 @@ module.exports = app.BaseModel.extend({
   derived: {
     viewLink: {
       deps: ['slug'],
-      fn: function () {
+      fn: function() {
         return '/blog/' + this.slug;
       }
     },
     editLink: {
       deps: ['slug'],
-      fn: function () {
+      fn: function() {
         return '/blog/' + this.slug + '/edit';
       }
     },
     deleteLink: {
       deps: ['slug'],
-      fn: function () {
+      fn: function() {
         return '/blog/' + this.slug + '/delete';
       }
     },
     bodyParsed: {
       deps: ['body'],
-      fn: function () {
+      fn: function() {
         return marked(this.body);
       }
     }

@@ -10,15 +10,15 @@ module.exports = View.extend({
     'model.typeClass': { type: 'class' }
   },
   events: {
-    'click': 'closeFlash'
+    click: 'closeFlash'
   },
-  initialize: function () {
+  initialize: function() {
     var view = this;
-    setTimeout(function () {
+    setTimeout(function() {
       view.collection.remove(view.model);
     }, 10000);
   },
-  closeFlash: function () {
+  closeFlash: function() {
     this.collection.remove(this.model);
   }
 });

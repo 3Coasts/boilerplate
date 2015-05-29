@@ -4,6 +4,10 @@ var View = require('ampersand-view')
 module.exports = View.extend({
   template: html,
   bindings: {
-    'model.signedIn': { type: 'toggle', yes: '[data-hook=logout],[data-hook=account]', no: '[data-hook=login],[data-hook=register]' }
+    'model.signedIn': {
+      type: 'toggle',
+      yes: '[data-hook=logout],[data-hook=account]',
+      no: '[data-hook=login],[data-hook=register]'
+    }
   }
 });

@@ -10,14 +10,13 @@ module.exports = View.extend({
     'model.deleteLink': { type: 'attribute', name: 'href', hook: 'delete' },
     'app.me.signedIn': { type: 'toggle', no: 'admin' }
   },
-  deleteArticle: function (e) {
-    if (confirm('Are you sure?')) {
+  deleteArticle: function() {
+    if (confirm('Are you sure?'))
       this.model.destroy({
-        success: function () {
+        success: function() {
           app.nav('widget');
         }
       });
-    }
   }
 
 });
