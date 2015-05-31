@@ -1,6 +1,8 @@
 var app = require('ampersand-app')
   , Router = require('ampersand-router')
-  , xhr = require('xhr');
+  , xhr = require('xhr')
+  , each = require('lodash.foreach')
+  , plugins = require('./config').plugins || [];
 
 var HomePage = require('./pages/home')
   , LoginPage = require('./pages/login')
@@ -12,8 +14,10 @@ module.exports = Router.extend({
 
   initialize: function() {
     // Add plugin routes
-    require('./plugins/blog/routes');
-    require('./plugins/widget/routes');
+    var router = this;
+    each(plugins, function(plugin) {
+      require('./plugins/' + plugin + '/routes')(router);
+    });
   },
 
   routes: {

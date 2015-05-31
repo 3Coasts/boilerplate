@@ -1,10 +1,10 @@
 <div class="grid-flex-container">
   <div class="grid-flex-cell">
-    <h1>Blog</h1>
-    <div data-hook="articles"></div>
+    <h1>{{nameCapitalized}}</h1>
+    <div data-hook="collection"></div>
     <div data-hook="paginator"></div>
     <div data-hook="admin">
-      <a href="/blog/new" class="button">New Article</a>
+      <a href="/{{name}}/new" class="button">New {{nameCapitalized}}</a>
     </div>
   </div>
 </div>

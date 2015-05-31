@@ -1,3 +1,4 @@
 module.exports = {
-  isDev: true
+  isDev: true,
+  plugins: ['widget','article']
 };

@@ -13,7 +13,15 @@
           </ul>
         </div>
 
-        <h1 class="name" data-hook="name"></h1>
+        <h3 data-hook="{{titleField}}">{{titleField}}</h3>
+
+        {{#detailFields}}
+        <div class="{{lowercase}}">
+          <div class="label"><strong>{{capitalized}}</strong></div>
+          <div class="value" data-hook="{{lowercase}}"></div>
+        </div>
+        {{/detailFields}}
+
 
       </div>
     </div>

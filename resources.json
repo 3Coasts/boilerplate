@@ -39,7 +39,12 @@
       { "method": "get", "path": "article/:id", "description": "Get article info" },
       { "method": "put", "path": "article/:id", "protect": true, "description": "Update an article" },
       { "method": "delete", "path": "article/:id", "protect": true, "description": "Deletes an article" }
-    ]
+    ],
+    "view": {
+      "titleField": "title",
+      "teaserFields": ["summary"],
+      "detailFields": ["body"]
+    }
   },
 
   {
@@ -56,7 +61,12 @@
       { "method": "get", "path": "widget/:id", "description": "Get widget info" },
       { "method": "put", "path": "widget/:id", "description": "Update an widget" },
       { "method": "delete", "path": "widget/:id", "description": "Deletes an widget" }
-    ]
+    ],
+    "view": {
+      "titleField": "name",
+      "teaserFields": [],
+      "detailFields": []
+    }
   }
 
 ]
