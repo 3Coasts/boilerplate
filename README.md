@@ -18,7 +18,7 @@ npm start
         - `ref`
         - other mongoose schema properties can be used
     - `populate`: to automatically populate references in default CRUD routes
-- `routes`: defines routes. default route code can be overridden by including a file in the routes folder that corresponds to the name of the resource and by exporting a function with the name of the method and parth all together in camelcase. Eg. `{ method: 'get', path: 'user/:id/reset' } => exports.getUserIdReset`
+- `routes`: defines routes. default route code can be overridden by including a file in the routes folder that corresponds to the name of the resource and by exporting a function with the name of the method and parth all together in camelcase. <br>Eg. `{ method: 'get', path: 'user/:id/reset' } => exports.getUserIdReset`
     - `method`: get, post, put, delete (the put post is duplicated with the patch method)
     - `path`
     - `protect`: users most be authenticated
