@@ -25,8 +25,9 @@ module.exports = View.extend({
       }
     }, function(err, resp, body) {
       if (err) return console.error(err);
+      if (resp.statusCode !== 200) return app.msg('LOGIN_FAILED', true);
       window.localStorage.accessToken = resp.headers['access-token'];
-      app.me.set(body);
+      app.me.fetch();
       app.me.signedIn = true;
       app.msg('USER_TOKEN_VERIFIED');
       app.nav('account');
