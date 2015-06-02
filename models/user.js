@@ -4,15 +4,16 @@ var config = require('../lib/config')
   , isUndefined = require('lodash.isundefined');
 
 module.exports = {
-  preSave: function preSave(cb) {
-    this.phone = this.phone.replace(/\D/g, '');
-    cb();
+  hooks: {
+    beforeValidate: function preSave(values, cb) {
+      values.phone = values.phone.replace(/\D/g, '');
+      cb();
+    }
   },
-  statics: {
+  classMethods: {
     register: function register(data, cb) {
       if (isUndefined(data.phone)) return cb('NO_PHONE', false);
-      var user = new this(data);
-      user.save(function userSaveCb(err, user) {
+      this.create(data, function(err, user) {
         if (err) return cb(err);
         cb(null, user);
       });

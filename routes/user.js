@@ -1,10 +1,10 @@
-var models = require('../lib/models')
-  , passport = require('../lib/passport')
+var passport = require('../lib/passport')
   , extend = require('lodash.assign')
-  , without = require('lodash.without');
+  , without = require('lodash.without')
+  , models = require('../lib/app').models;
 
 exports.postUser = function postUser(req, res, next) {
-  models.User.register(req.body, function cb(err, user) {
+  models.user.register(req.body, function cb(err, user) {
     if (err) return next(err);
     if (!user) return res.sendStatus(404);
     return res.json(user);
@@ -31,7 +31,7 @@ exports.getUserLogout = function getUserLogout(req, res, next) {
 };
 
 exports.postUserToken = function postUserToken(req, res, next) {
-  models.User.findOne({phone: req.body.phone}, function cb(err, user) {
+  models.user.findOne({phone: req.body.phone}, function cb(err, user) {
     if (err) return next(err);
     if (!user) return res.sendStatus(404);
     user.sendToken(function sendTokenCb(err) {

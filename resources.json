@@ -3,12 +3,11 @@
   {
     "name": "user",
     "model": {
-      "slug": "name",
-      "props": {
+      "attributes": {
         "name": { "type": "string", "required": true },
-        "phone": { "type": "string", "unique": true, "select": false },
-        "authToken": { "type": "string", "select": false },
-        "accessTokens": { "type": "array", "default": [], "select": false }
+        "phone": { "type": "string", "unique": true },
+        "authToken": { "type": "string", "remove": true },
+        "accessTokens": { "type": "array", "remove": true }
       }
     },
     "routes": [
@@ -24,12 +23,11 @@
   {
     "name": "article",
     "model": {
-      "slug": "title",
-      "props": {
+      "attributes": {
         "title": { "type": "string", "required": true },
         "summary": { "type": "string" },
         "body": { "type": "string" },
-        "author": { "type": "ref", "ref": "user", "required": true }
+        "author": { "model": "user" }
       },
       "populate": "author"
     },
@@ -50,8 +48,7 @@
   {
     "name": "widget",
     "model": {
-      "slug": "name",
-      "props": {
+      "attributes": {
         "name": { "type": "string", "required": true }
       }
     },

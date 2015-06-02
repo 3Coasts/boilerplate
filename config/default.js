@@ -4,10 +4,6 @@ module.exports = {
   authTokenTimeout: 60000,            // Time before authTokens are deleted
   debug: true,                        // Used to print messages to console
   port: 3000,
-  mongo: {                            // Host, database, user, pass
-    host: 'localhost',
-    database: 'boilerplate'
-  },
   twilio: {},                         // Sid, token, number
   favicon: {
     files: {

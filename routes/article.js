@@ -1,10 +1,9 @@
-var Article = require('../lib/models').Article;
+var models = require('../lib/app').models;
 
 exports.postArticle = function postArticle(req, res, next) {
   req.body.author = req.user;
-  var doc = new Article(req.body);
-  doc.save(function saveCb(err, doc) {
+  models.article.create(req.body, function(err, model) {
     if (err) return next(err);
-    return res.json(doc);
-  });
+    return res.json(model);
+  })
 };
