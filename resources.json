@@ -12,15 +12,13 @@
     },
     "routes": [
       { "method": "post", "path": "user", "description": "Creates a new user" },
-      { "method": "post", "path": "user/token", "description": "Client sends phone number and gets a token"  },
+      { "method": "post", "path": "user/token", "description": "Client sends phone number and gets a token" },
       { "method": "post", "path": "user/login", "description": "Client post phone and token to authenticate" },
       { "method": "get", "path": "user/me", "protect": true, "description": "Get logged in user" },
       { "method": "get", "path": "user/logout", "protect": true, "description": "Logout" },
       { "method": "get", "path": "user/:id", "protect": true, "description": "Get user info" }
     ]
-  },
-
-  {
+  }, {
     "name": "article",
     "model": {
       "attributes": {
@@ -43,9 +41,7 @@
       "teaserFields": ["summary"],
       "detailFields": ["body"]
     }
-  },
-
-  {
+  }, {
     "name": "widget",
     "model": {
       "attributes": {
@@ -56,8 +52,8 @@
       { "method": "get", "path": "widget", "description": "Get widget collection" },
       { "method": "post", "path": "widget", "description": "Creates a new widget" },
       { "method": "get", "path": "widget/:id", "description": "Get widget info" },
-      { "method": "put", "path": "widget/:id", "description": "Update an widget" },
-      { "method": "delete", "path": "widget/:id", "description": "Deletes an widget" }
+      { "method": "put", "path": "widget/:id", "description": "Update a widget" },
+      { "method": "delete", "path": "widget/:id", "description": "Deletes a widget" }
     ],
     "view": {
       "titleField": "name",
