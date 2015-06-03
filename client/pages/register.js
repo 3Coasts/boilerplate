@@ -23,7 +23,7 @@ module.exports = View.extend({
     e.preventDefault();
     var me = {
       name: this.queryByHook('name').value,
-      phone: this.queryByHook('phone').value
+      phone: this.queryByHook('phone').value.replace(/\D/g,'')
     };
     app.me.phone = me.phone;
     this.collection.create(me, {

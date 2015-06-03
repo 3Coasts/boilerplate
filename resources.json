@@ -5,7 +5,7 @@
     "model": {
       "attributes": {
         "name": { "type": "string", "required": true },
-        "phone": { "type": "string", "unique": true },
+        "phone": { "type": "string", "unique": true, "numeric": true },
         "authToken": { "type": "string", "remove": true },
         "accessTokens": { "type": "array", "remove": true }
       }

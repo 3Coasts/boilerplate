@@ -4,3 +4,4 @@ config
 public
 npm-debug.log
 .tmp
+client/plugins
