@@ -18,7 +18,9 @@
       { "method": "get", "path": "user/logout", "protect": true, "description": "Logout" },
       { "method": "get", "path": "user/:id", "protect": true, "description": "Get user info" }
     ]
-  }, {
+  },
+
+  {
     "name": "article",
     "model": {
       "attributes": {
@@ -41,7 +43,9 @@
       "teaserFields": ["summary"],
       "detailFields": ["body"]
     }
-  }, {
+  },
+
+  {
     "name": "widget",
     "model": {
       "attributes": {
