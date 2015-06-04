@@ -5,15 +5,8 @@
 
       {{#each attributes}}
       <div class='form-element'>
-        <label for='{{lowercase}}'>{{capitalized}}</label>
-        <{{inputElement}}
-          {{#each inputElementAttributes}}
-            {{@key}}='{{this}}'
-          {{/each}}
-          data-hook="{{lowercase}}"
-          placeholder='{{capitalized}}'
-          id='{{lowercase}}'
-          class='form-input'>
+        <label for='{{id}}'>{{capitalized}}</label>
+        <{{inputElement}}{{#each inputElementAttributes}} {{@key}}='{{this}}'{{/each}} data-hook="{{lowercase}}" id='{{id}}'>{{#if inputIsNotVoidElement}}</{{inputElement}}>{{/if}}
       </div>
       {{/each}}
 

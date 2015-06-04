@@ -5,11 +5,7 @@
     "model": {
       "attributes": {
         "name": { "type": "string", "required": true },
-        "phone": {
-          "type": "string", "unique": true, "numeric": true,
-          "inputElement": "input",
-          "inputElementAttributes": { "type": "text", "min": "0", "pattern": "[0-9]*", "inputmode": "numeric" }
-        },
+        "phone": { "type": "string", "unique": true, "numeric": true },
         "authToken": { "type": "string", "remove": true },
         "accessTokens": { "type": "array", "remove": true }
       }
@@ -59,7 +55,11 @@
     "name": "widget",
     "model": {
       "attributes": {
-        "name": { "type": "string", "required": true }
+        "name": { "type": "string", "required": true },
+        "description": {
+          "type": "string",
+          "inputElement": "textarea"
+        }
       }
     },
     "routes": [
