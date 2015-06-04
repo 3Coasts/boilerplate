@@ -3,12 +3,19 @@
     <fieldset>
       <legend data-hook="page-title">New {{nameCapitalized}}</legend>
 
-      {{#attributes}}
+      {{#each attributes}}
       <div class='form-element'>
         <label for='{{lowercase}}'>{{capitalized}}</label>
-        <input type='text' id='{{lowercase}}' data-hook="{{lowercase}}" placeholder='{{capitalized}}' class='form-input'>
+        <{{inputElement}}
+          {{#each inputElementAttributes}}
+            {{@key}}='{{this}}'
+          {{/each}}
+          data-hook="{{lowercase}}"
+          placeholder='{{capitalized}}'
+          id='{{lowercase}}'
+          class='form-input'>
       </div>
-      {{/attributes}}
+      {{/each}}
 
       <button type='submit' class='button button-primary'>Save</button>
 

@@ -5,7 +5,11 @@
     "model": {
       "attributes": {
         "name": { "type": "string", "required": true },
-        "phone": { "type": "string", "unique": true, "numeric": true },
+        "phone": {
+          "type": "string", "unique": true, "numeric": true,
+          "inputElement": "input",
+          "inputElementAttributes": { "type": "text", "min": "0", "pattern": "[0-9]*", "inputmode": "numeric" }
+        },
         "authToken": { "type": "string", "remove": true },
         "accessTokens": { "type": "array", "remove": true }
       }
@@ -26,7 +30,10 @@
       "attributes": {
         "title": { "type": "string", "required": true },
         "summary": { "type": "string" },
-        "body": { "type": "string" },
+        "body": {
+          "type": "string",
+          "inputElement": "textarea"
+        },
         "author": { "model": "user" }
       },
       "populate": "author"
@@ -41,7 +48,10 @@
     "view": {
       "titleField": "title",
       "teaserFields": ["summary"],
-      "detailFields": ["body"]
+      "detailFields": ["body"],
+      "input": {
+        "body": { "element": "textarea" }
+      }
     }
   },
 
