@@ -4,10 +4,12 @@
       <legend data-hook="page-title">New {{nameCapitalized}}</legend>
 
       {{#each attributes}}
+      {{#unless remove}}
       <div class='form-element'>
         <label for='{{id}}'>{{capitalized}}</label>
         <{{inputElement}}{{#each inputElementAttributes}} {{@key}}='{{this}}'{{/each}} data-hook="{{lowercase}}" id='{{id}}'>{{#if inputIsNotVoidElement}}</{{inputElement}}>{{/if}}
       </div>
+      {{/unless}}
       {{/each}}
 
       <button type='submit' class='button button-primary'>Save</button>
