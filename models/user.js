@@ -36,8 +36,8 @@ module.exports = {
         }, cb);
       });
       setTimeout(function clearAuthToken() {
-        user.authToken = null;
-        user.save();
+        var models = require('../lib/app').models;
+        models.user.update(user.id, { authToken: null }).exec(function() {})
       }, config.authTokenTimeout);
     }
   }

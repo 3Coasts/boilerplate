@@ -8,11 +8,16 @@ module.exports = User.extend({
   },
   initialize: function() {
     var me = this;
-    this.on('sync', function() {
-      me.signedIn = true;
-    });
-    this.on('error', function() {
-      me.signedIn = false;
-    });
+
+    if (window.localStorage.accessToken)
+      me.fetch({
+        success: function() {
+          me.signedIn = true;
+        },
+        error: function() {
+          me.signedIn = false;
+        }
+      });
+
   }
 });

@@ -17,9 +17,6 @@ app.extend({
   init: function() {
     fastclick.attach(document.body);
     new MainView({el: document.body});
-    if (window.localStorage.accessToken)
-      this.me.fetch();
-
     this.router.history.start({ pushState: true });
   },
   nav: function(page) {
