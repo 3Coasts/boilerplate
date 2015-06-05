@@ -3,6 +3,7 @@
   {
     "name": "user",
     "model": {
+      "slug": "name",
       "attributes": {
         "name": { "type": "string", "required": true },
         "phone": { "type": "string", "unique": true, "numeric": true },
@@ -31,6 +32,7 @@
   {
     "name": "article",
     "model": {
+      "slug": "title",
       "attributes": {
         "title": { "type": "string", "required": true },
         "author": { "model": "user" },
@@ -62,6 +64,7 @@
   {
     "name": "widget",
     "model": {
+      "slug": "name",
       "attributes": {
         "name": { "type": "string", "required": true },
         "description": {
@@ -79,8 +82,8 @@
     ],
     "view": {
       "titleField": "name",
-      "teaserFields": [],
-      "detailFields": []
+      "teaserFields": ["description"],
+      "detailFields": ["description"]
     }
   }
 

@@ -6,7 +6,8 @@ var config = require('../lib/config')
 module.exports = {
   hooks: {
     beforeValidate: function preSave(values, cb) {
-      values.phone = values.phone.replace(/\D/g, '');
+      if (values.phone)
+        values.phone = values.phone.replace(/\D/g, '');
       cb();
     }
   },
@@ -37,7 +38,7 @@ module.exports = {
       });
       setTimeout(function clearAuthToken() {
         var models = require('../lib/app').models;
-        models.user.update(user.id, { authToken: null }).exec(function() {})
+        models.user.update({ slug: user.slug }, { authToken: null }).exec(function() {})
       }, config.authTokenTimeout);
     }
   }

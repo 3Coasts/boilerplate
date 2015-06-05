@@ -5,6 +5,17 @@ module.exports = {
   debug: true,                        // Used to print messages to console
   port: 3000,
   twilio: {},                         // Sid, token, number
+  databases: {
+    default: 'disk',
+    disk: {
+      filePath: '.tmp/'
+    },
+    //mongo: {
+    //  host: 'localhost',
+    //  port: 27017,
+    //  database: 'boilerplate'
+    //}
+  },
   favicon: {
     files: {
       src: './public/favicon.png',    // Path(s) to produce the favicons. `string` or `object`
