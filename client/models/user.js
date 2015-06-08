@@ -4,7 +4,7 @@ module.exports = Model.extend({
   modelType: 'User',
   urlRoot: '/api/v1/user',
   props: {
-    id: 'string',
+    id: 'any',
     name: 'string',
     phone: 'string'
   }

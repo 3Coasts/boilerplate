@@ -7,18 +7,13 @@ module.exports = Model.extend({
   urlRoot: '/api/v1/{{name}}',
   idAttribute: 'slug',
   props: {
-    id: 'string',
+    id: 'any',
     slug: 'string',
     {{#attributes}}
     {{#unless model}}
     {{lowercase}}: '{{type}}',
     {{/unless}}
     {{/attributes}}
-  },
-  parse: function (attrs) {
-    if (!isString(attrs.id))
-      attrs.id = String(attrs.id);
-    return attrs;
   },
   children: {
     {{#attributes}}
