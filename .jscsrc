@@ -3,7 +3,6 @@
   "disallowMultipleVarDecl": null,
   "disallowCurlyBraces": true,
   "disallowSpacesInFunction": null,
-  "disallowNamedUnassignedFunctions": true,
   "requireCurlyBraces": null,
   "requireTrailingComma": null,
   "maximumLineLength": 100,
