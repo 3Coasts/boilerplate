@@ -73,7 +73,10 @@ module.exports = View.extend({
   },
 
   blur: function() {
-    this.show = false;
+    var view = this;
+    setTimeout(function () {
+      view.show = false;
+    }, 300)
   },
 
   move: function(position) {
