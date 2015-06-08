@@ -10,15 +10,10 @@ module.exports = {
     disk: {
       filePath: '.tmp/'
     },
-    //mongo: {
-    //  host: 'localhost',
-    //  port: 27017,
-    //  database: 'boilerplate'
-    //}
+    mongo: {}                         // host, port, user, password, database
   },
   favicon: {
     files: {
-      src: './public/favicon.png',    // Path(s) to produce the favicons. `string` or `object`
       dest: './public/favicons',      // Folder to write the favicons `string`
       html: './lib/index.html',       // Path(s) to HTML file to write/append to. `string|array`
       iconsPath: '/favicons',         // Path for overriding default icons path. `string`
