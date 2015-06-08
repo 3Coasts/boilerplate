@@ -4,12 +4,16 @@
       <legend><span data-hook="operation"></span> {{nameCapitalized}}</legend>
 
       {{#each attributes}}
-      {{#unless remove}}
+      {{#unlessAnd remove model}}
       <div class='form-element'>
         <label for='{{id}}'>{{capitalized}}</label>
         <{{inputElement}}{{#each inputElementAttributes}} {{@key}}='{{this}}'{{/each}} data-hook="{{lowercase}}" id='{{id}}'>{{#if inputIsNotVoidElement}}</{{inputElement}}>{{/if}}
       </div>
-      {{/unless}}
+      {{/unlessAnd}}
+
+      {{#if model}}
+      <div data-hook="{{id}}"></div>
+      {{/if}}
       {{/each}}
 
       <button type='submit' class='button button-primary'>Save</button>
