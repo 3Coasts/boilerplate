@@ -1,4 +1,5 @@
-var View = require('ampersand-view')
+var app = require('ampersand-app')
+  , View = require('ampersand-view')
   , isString = require('lodash.isstring')
   , isObject = require('lodash.isobject')
   , vprintf = require('sprintf-js').vsprintf

@@ -1,4 +1,5 @@
-var View = require('ampersand-view')
+var app = require('ampersand-app')
+  , View = require('ampersand-view')
   , xhr = require('xhr')
   , html = require('./login.html');
 
