@@ -22,24 +22,35 @@ module.exports = {
   },
   instanceMethods: {
     sendToken: function sendToken(cb) {
+      var models = require('../lib/app').models;
       var user = this;
-      user.authToken = token(7, '1234567890');
-      user.save(function userSaveCb(err) {
+
+      models.access.create({ key: token(7, '1234567890'), user: user.id }, function (err, access) {
         if (err) return cb(err);
+
+        setTimeout(function clearAuthToken() {
+          models.access.findOne(access.id, function(err, access) {
+            if (err) console.error(err)
+            if (!access.token)
+              access.destroy(function (err) {
+                if (err) console.error(err)
+              })
+          })
+        }, config.authTokenTimeout);
+
         if (config.isDev) {
-          console.log('Authorization Token: ' + user.authToken);
+          console.log('Authorization Token: ' + access.key);
           return cb(null);
         }
+
         twilio.sendMessage({
           from: config.twilio.number,
           to: user.phone,
-          body: 'Authentication Token: ' + user.authToken
+          body: 'Authentication Token: ' + access.key
         }, cb);
+
       });
-      setTimeout(function clearAuthToken() {
-        var models = require('../lib/app').models;
-        models.user.update({ slug: user.slug }, { authToken: null }).exec(function() {})
-      }, config.authTokenTimeout);
+
     }
   }
 };

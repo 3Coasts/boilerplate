@@ -1,14 +1,25 @@
 [
 
   {
+    "name": "access",
+    "model": {
+      "slug": false,
+      "attributes": {
+        "key": { "type": "string" },
+        "token": { "type": "string" },
+        "scope": { "type": "string" },
+        "user": { "model": "user" }
+      }
+    }
+  },
+
+  {
     "name": "user",
     "model": {
       "slug": "name",
       "attributes": {
         "name": { "type": "string", "required": true },
-        "phone": { "type": "string", "unique": true, "numeric": true },
-        "authToken": { "type": "string", "remove": true },
-        "accessTokens": { "type": "array", "remove": true }
+        "phone": { "type": "string", "unique": true, "numeric": true }
       }
     },
     "routes": [
