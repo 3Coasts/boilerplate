@@ -4,9 +4,7 @@
   "private": true,
   "main": "lib/app.js",
   "scripts": {
-    "build": "webpack",
-    "start": "node lib/app",
-    "generate-icons": "./lib/favicons.js"
+    "start": "node lib/app"
   },
   "dependencies": {
     "ampersand-app": "^1.0.3",
