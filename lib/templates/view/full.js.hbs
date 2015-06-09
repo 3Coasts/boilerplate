@@ -15,8 +15,9 @@ module.exports = View.extend({
     {{/detailFields}}
     'model.editLink': { type: 'attribute', name: 'href', hook: 'edit' },
     'model.deleteLink': { type: 'attribute', name: 'href', hook: 'delete' },
-    'app.me.signedIn': { type: 'toggle', no: 'admin' }
+    'me.signedIn': { type: 'toggle', hook: 'admin' }
   },
+  props: { me: { type: 'any' } },
   deleteArticle: function() {
     if (confirm('Are you sure?'))
       this.model.destroy({

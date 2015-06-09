@@ -17,7 +17,7 @@ module.exports = function plugin(router) {
   router.route('{{name}}/:slug', 'page', function(slug) {
     collection.getOrFetch(slug, function(err, model) {
       if (err) return console.error(err);
-      app.trigger('page', new FullView({ model: model }));
+      app.trigger('page', new FullView({ model: model, me: app.me }));
     });
   });
 
