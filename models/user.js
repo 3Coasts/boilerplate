@@ -31,6 +31,7 @@ module.exports = {
         setTimeout(function clearAuthToken() {
           models.access.findOne(access.id, function(err, access) {
             if (err) console.error(err)
+            if (!access) return;
             if (!access.token)
               access.destroy(function (err) {
                 if (err) console.error(err)
