@@ -8,7 +8,7 @@ marked.setOptions({ gfm: true });
 module.exports = View.extend({
   template: html,
   bindings: {
-    readme: { type: 'innerHTML' }
+    readme: { type: 'innerHTML', hook: 'readme' }
   },
   initialize: function () {
     this.readme = marked(readme)

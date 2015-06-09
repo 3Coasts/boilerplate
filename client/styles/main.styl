@@ -24,3 +24,28 @@ div.form-element
 div.form-element
   li.active
     font-weight: bold
+
+li.title
+  color: $green-lighter
+  padding-left: 0
+  text-transform: uppercase
+  font-family: $font-monospaced
+  font-size: $font-medium
+  font-weight: bold
+  a
+    color: white
+
+.top-nav-green
+  background-color: $green
+  label, a
+    color: $green-light
+    &:hover, &:active, label
+      color: lighten($green-lighter, 40%)
+
+a
+  color: $green
+  &:hover
+    color: darken($green, 20%)
+
+.button
+  @extend .button-approve
