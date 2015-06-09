@@ -29,9 +29,9 @@
       { "method": "post", "path": "user/login", "description": "Client post phone and token to authenticate" },
       { "method": "get", "path": "user/me", "protect": true, "description": "Get logged in user" },
       { "method": "get", "path": "user/logout", "protect": true, "description": "Logout" },
-      { "method": "get", "path": "user/:id", "protect": true, "description": "Get user info" },
-      { "method": "put", "path": "user/:id", "protect": true, "description": "Update an user" },
-      { "method": "delete", "path": "user/:id", "protect": true, "description": "Deletes an user" }
+      { "method": "get", "path": "user/:slug", "protect": true, "description": "Get user info" },
+      { "method": "put", "path": "user/:slug", "protect": true, "description": "Update an user" },
+      { "method": "delete", "path": "user/:slug", "protect": true, "description": "Deletes an user" }
     ],
     "view": {
       "titleField": "name",
@@ -58,9 +58,9 @@
     "routes": [
       { "method": "get", "path": "article", "description": "Get article collection" },
       { "method": "post", "path": "article", "protect": true, "description": "Creates a new article" },
-      { "method": "get", "path": "article/:id", "description": "Get article info" },
-      { "method": "put", "path": "article/:id", "protect": true, "description": "Update an article" },
-      { "method": "delete", "path": "article/:id", "protect": true, "description": "Deletes an article" }
+      { "method": "get", "path": "article/:slug", "description": "Get article info" },
+      { "method": "put", "path": "article/:slug", "protect": true, "description": "Update an article" },
+      { "method": "delete", "path": "article/:slug", "protect": true, "description": "Deletes an article" }
     ],
     "view": {
       "titleField": "title",
@@ -87,9 +87,9 @@
     "routes": [
       { "method": "get", "path": "widget", "description": "Get widget collection" },
       { "method": "post", "path": "widget", "description": "Creates a new widget" },
-      { "method": "get", "path": "widget/:id", "description": "Get widget info" },
-      { "method": "put", "path": "widget/:id", "description": "Update a widget" },
-      { "method": "delete", "path": "widget/:id", "description": "Deletes a widget" }
+      { "method": "get", "path": "widget/:slug", "description": "Get widget info" },
+      { "method": "put", "path": "widget/:slug", "description": "Update a widget" },
+      { "method": "delete", "path": "widget/:slug", "description": "Deletes a widget" }
     ],
     "view": {
       "titleField": "name",
