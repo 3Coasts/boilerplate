@@ -26,16 +26,10 @@ var conf = {
   plugins: [
     new webpack.optimize.DedupePlugin(),
     new ExtractTextPlugin('app.css', { allChunks: true })
-  ],
-  stats: { colors: true, modules: false, reasons: true },
-  storeStatsTo: './public/build/webpack-stats.txt'
+  ]
 };
 
-if (config.isDev) {
-  conf.watch = true;
-  conf.keepalive = true;
-  conf.failOnError = false;
-} else
+if (!config.isDev)
   conf.plugins.push(new webpack.optimize.UglifyJsPlugin({
     compress: { warnings: false },
     output: { comments: false },
