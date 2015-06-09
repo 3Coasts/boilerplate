@@ -1,4 +1,8 @@
-# Boilerplate
+![License](http://img.shields.io/:license-gpl3-blue.svg)
+
+# Resources
+
+Build a single page web application, native web app or whatever. Using [NodeJS](https://nodejs.org/), [ExpressJS](http://expressjs.com/), [AmpersandJS](http://ampersandjs.com/), [Waterline](https://github.com/balderdashy/waterline), [Webpack](http://webpack.github.io/). Declare your application resources in JSON format. 
 
 ```
 git clone --depth=1 https://github.com/brianberlin/boilerplate.git myproject
