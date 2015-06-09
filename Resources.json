@@ -65,10 +65,7 @@
     "view": {
       "titleField": "title",
       "teaserFields": ["summary"],
-      "detailFields": ["author", "body"],
-      "input": {
-        "body": { "element": "textarea" }
-      }
+      "detailFields": ["author", "body"]
     }
   },
 
