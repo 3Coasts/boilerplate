@@ -5,7 +5,7 @@ var webpack = require('webpack')
   , config = require('./lib/config');
 
 var loaders = [
-  { test: /\.html$/, loader: 'html' },
+  { test: /\.(html|md)/, loader: 'html' },
   { test: /\.json$/, loader: 'json' },
   { test: /\.css$/, loader: 'style-loader!css-loader!postcss-loader' },
   {
