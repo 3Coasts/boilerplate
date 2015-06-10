@@ -3,7 +3,6 @@ var app = require('ampersand-app')
   , bind = require('lodash.bind')
   , styles = require('./styles/main.styl')
   , fastclick = require('fastclick')
-  , BaseModel = require('./models/base-model')
   , Me = require('./models/me')
   , Router = require('./router')
   , config = require('./config')
@@ -13,7 +12,6 @@ var app = require('ampersand-app')
 app.extend({
   me: new Me(),
   router: new Router(),
-  BaseModel: BaseModel,
   init: function() {
     fastclick.attach(document.body);
     new MainView({el: document.body});
